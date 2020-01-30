@@ -22,11 +22,12 @@ It contains most of usual tags and constructions used in such specfiles.
 
 %prep
 %setup
+sed -i 's@install_path=.*@install_path="%buildroot/usr/share/%name"@' ./install.sh
+sed -i 's@bin_path=.*@bin_path="%buildroot/usr/bin/"@' ./install.sh
+
 #patch0 -p1
 
 %build
-%configure
-%make_build
 
 %install
 #cp file %buildroot/etc
@@ -34,10 +35,14 @@ It contains most of usual tags and constructions used in such specfiles.
 
 %files
 %doc LICENSE
+/usr/share/%name/
+/usr/bin/pokemonsay
+/usr/bin/pokemonthink
 
 #%_bindir/*
 #%_man1dir/*
 
 %changelog
-* Sat Sep 33 3001 Sample Packager <sample@altlinux.org> 1.0-alt1
-- initial build
+* Thu Jan 30 2020 Eugene Omelyanovich <regatio@etersoft.ru> 1.0.0-alt1
+- Initial build
+
