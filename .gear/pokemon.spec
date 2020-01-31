@@ -23,7 +23,7 @@ It contains most of usual tags and constructions used in such specfiles.
 %prep
 %setup
 sed -i 's@install_path=.*@install_path="%buildroot/usr/share/%name"@' ./install.sh
-sed -i 's@bin_path=.*@bin_path="%buildroot/usr/bin/"@' ./install.sh
+sed -i 's@bin_path=.*@bin_path="%buildroot/usr/bin/%name"@' ./install.sh
 
 #patch0 -p1
 
@@ -36,8 +36,7 @@ sed -i 's@bin_path=.*@bin_path="%buildroot/usr/bin/"@' ./install.sh
 %files
 %doc LICENSE
 /usr/share/%name/
-/usr/bin/pokemonsay
-/usr/bin/pokemonthink
+/usr/bin/%name/
 
 #%_bindir/*
 #%_man1dir/*
